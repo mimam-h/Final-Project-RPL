@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\EstimasiController;
+use App\Http\Controllers\PengunjungController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +17,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Pengunjung
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('index',[
+        "title" => "Beranda"
+    ]);
 });
+
+Route::get('/estimasi',[EstimasiController::class,'index']);
+
+Route::get('login',[LoginController::class,'index']);
+
+// Pelanggan
+
+Route::get('/home',[PengunjungController::class,'index']);
+
+Route::get('/transaksi',[PengunjungController::class,'transaksi']);
+
+Route::get('/riwayat',[PengunjungController::class,'riwayat']);

@@ -36,3 +36,5 @@ Route::get('/home',[PengunjungController::class,'index']);
 Route::get('/transaksi',[PengunjungController::class,'transaksi']);
 
 Route::get('/riwayat',[PengunjungController::class,'riwayat']);
+
+Route::get('/profil',[PengunjungController::class,'profil']);

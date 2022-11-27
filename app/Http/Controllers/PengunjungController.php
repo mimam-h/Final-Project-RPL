@@ -27,4 +27,11 @@ class PengunjungController extends Controller
             "title" => "Riwayat"
         ]);
     }
+
+    public function profil()
+    {   
+        return view('pengunjung.profil',[
+            "title" => "Profil"
+        ]);
+    }
 }

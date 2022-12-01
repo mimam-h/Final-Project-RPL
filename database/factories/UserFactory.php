@@ -22,6 +22,7 @@ class UserFactory extends Factory
             'nomor_telepon' => fake()->unique()->phoneNumber(),
             'alamat' => fake()->address(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'role' => 'admin',
             'remember_token' => Str::random(10),
         ];
     }

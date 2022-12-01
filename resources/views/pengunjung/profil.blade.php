@@ -1,7 +1,7 @@
 @extends('layouts.main')
 <!--merujuk ke main.blade.php-->
 @section('container')
-<a href="/">
+<a href="/home">
     <img src="img/back-button.png" alt="#" style="width:50px;margin-left:-6%"
         class="position-absolute btn btn-outline-primary mt-4">
 </a>

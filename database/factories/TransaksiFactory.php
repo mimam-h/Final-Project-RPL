@@ -16,7 +16,7 @@ class TransaksiFactory extends Factory
      */
     public function definition()
     {
-        $status = ["Sedang Menunggu","Diproses","Selesai"];
+        $status = ["Menunggu","Diproses","Selesai"];
         $statusBayar = ["Lunas","Belum Lunas"];
 
         return [

@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Middleware\CheckRole;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\EstimasiController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengunjungController;
 
 /*
@@ -17,6 +20,18 @@ use App\Http\Controllers\PengunjungController;
 |
 */
 
+// Auth
+
+Route::get('/register',[RegisterController::class,'index'])->middleware('guest');
+
+Route::post('/register',[RegisterController::class,'store']);
+
+Route::get('/login',[LoginController::class,'index'])->name('login')->middleware('guest');
+
+Route::post('/login',[LoginController::class,'authenticate']);
+
+Route::post('/logout',[LoginController::class,'logout']);
+
 // Pengunjung
 
 Route::get('/', function () {
@@ -27,14 +42,16 @@ Route::get('/', function () {
 
 Route::get('/estimasi',[EstimasiController::class,'index']);
 
-Route::get('login',[LoginController::class,'index']);
-
 // Pelanggan
 
 Route::get('/home',[PengunjungController::class,'index']);
 
-Route::get('/transaksi',[PengunjungController::class,'transaksi']);
+Route::get('/transaksi',[PengunjungController::class,'transaksi'])->middleware('auth');
 
-Route::get('/riwayat',[PengunjungController::class,'riwayat']);
+Route::get('/riwayat',[PengunjungController::class,'riwayat'])->middleware(['auth','checkRole:pelanggan']);
 
-Route::get('/profil',[PengunjungController::class,'profil']);
+Route::get('/profil',[PengunjungController::class,'profil'])->middleware(['auth','checkRole:pelanggan']);
+
+// Admin
+
+Route::get('/dashboard',[DashboardController::class,'index'])->middleware(['auth','checkRole:admin']);

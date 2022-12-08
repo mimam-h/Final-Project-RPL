@@ -65,3 +65,8 @@ Route::resource('/dashboard/transaksi',AdminTransaksiController::class)->middlew
 Route::get('/dashboard/diproses',[AdminTransaksiController::class,'diproses'])->middleware(['auth','checkRole:admin']);
 
 Route::get('/dashboard/selesai',[AdminTransaksiController::class,'selesai'])->middleware(['auth','checkRole:admin']);
+
+Route::get('/dashboard/process/{transaksi:id}',[AdminTransaksiController::class,'process'])->middleware(['auth','checkRole:admin']);
+
+Route::get('/dashboard/finish/{transaksi:id}',[AdminTransaksiController::class,'finish'])->middleware(['auth','checkRole:admin']);
+

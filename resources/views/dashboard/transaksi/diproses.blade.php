@@ -47,7 +47,7 @@
                                             </button>
                                         </form>
                                     </td>
-                                    <td><button id="btn">Proses</button></td>
+                                    <td><a href="/dashboard/finish/{{ $item->id }}" class="badge bg-success text-decoration-none"><span data-feather="check"></span>Selesai</a></td>
                                 </tr>
                             @endforeach
                         </tbody>

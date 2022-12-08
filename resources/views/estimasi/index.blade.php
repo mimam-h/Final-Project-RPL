@@ -32,12 +32,29 @@
                         <fieldset disabled>
                             <div class="mb-3">
                                 <label for="disabledTextInput" class="form-label">Estimasi</label>
-                                <input type="text" id="disabledTextInput" class="form-control" placeholder="Rp ,-">
+                                <input type="text" id="disabledTextInput" class="form-control" placeholder="Rp">
                             </div>
                         </fieldset>
-                        <button type="submit" class="btn btn-primary justify-content-center">Hitung</button>
+                        <button type="submit" id="tombol" class="btn btn-primary justify-content-center">Hitung</button>
                 </form>
             </div>
         </div>
     </section>
+    <script>
+        const beratBaju = document.getElementById("beratBaju");
+        const jumlahJaket = document.getElementById("jumlahJaket");
+        const jumlahSelimut = document.getElementById("jumlahSelimut");
+        const tombol = document.getElementById("tombol");
+        const hasil = document.getElementById("disabledTextInput")
+        
+        tombol.addEventListener("click", hitungEstimasi);
+        function hitungEstimasi(){
+            const baju = beratBaju.value;
+            const jaket = beratBaju.value;
+            const selimut = beratBaju.value;
+            const total = baju * 7000 + jaket * 5000 + selimut + 12000
+            hasil.value="Rp"+total;
+        }
+
+    </script>
 @endsection

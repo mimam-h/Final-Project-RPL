@@ -138,4 +138,16 @@ class AdminTransaksiController extends Controller
             'transaksi' => $transaksi
         ]);
     }
+
+    public function process(Transaksi $transaksi)
+    {
+        $request = Transaksi::where('id',$transaksi->id)->update(['status' => 'Diproses']);
+        return redirect('/dashboard/diproses')->with('success','Transaksi berhasil diproses');
+    }
+
+    public function finish(Transaksi $transaksi)
+    {
+        $request = Transaksi::where('id',$transaksi->id)->update(['status' => 'Selesai']);
+        return redirect('/dashboard/selesai')->with('success','Transaksi berhasil diselesaikan');
+    }
 }

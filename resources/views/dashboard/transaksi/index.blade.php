@@ -56,7 +56,7 @@
                                             </button>
                                         </form>
                                     </td>
-                                    <td><button id="btn">Proses</button></td>
+                                    <td><a href="/dashboard/process/{{ $item->id }}" class="badge bg-primary text-decoration-none"><span data-feather="clock"></span>Proses</a></td>
                                 </tr>
                             @endforeach
                         </tbody>

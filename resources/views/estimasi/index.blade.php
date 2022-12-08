@@ -12,7 +12,7 @@
         </h3>
         <div class="d-inline-flex flex-column justify-content-center">
             <div class="container-rataKanan position-absolute start-50 ms-5 p-4">
-                <form class="form-cekTarif border border-dark p-5 rounded-3">
+                <div class="div-cekTarif border border-dark p-5 rounded-3">
                     <h4 style="font-weight: 500;">Isi Form Untuk Cek Tarif Laundry</h1>
                         <div class="mb-1">
                             <label for="beratBaju" class="form-label">Berat Baju(kg)</label>
@@ -35,8 +35,8 @@
                                 <input type="text" id="disabledTextInput" class="form-control" placeholder="Rp">
                             </div>
                         </fieldset>
-                        <button type="submit" id="tombol" class="btn btn-primary justify-content-center">Hitung</button>
-                </form>
+                        <button id="tombol" class="btn btn-primary justify-content-center">Hitung</button>
+                    </div>
             </div>
         </div>
     </section>
@@ -49,10 +49,14 @@
         
         tombol.addEventListener("click", hitungEstimasi);
         function hitungEstimasi(){
-            const baju = beratBaju.value;
-            const jaket = beratBaju.value;
-            const selimut = beratBaju.value;
-            const total = baju * 7000 + jaket * 5000 + selimut + 12000
+            const baju = parseInt(beratBaju.value);
+            const jaket = parseInt(jumlahJaket.value)   ;
+            const selimut = parseInt(jumlahSelimut.value);
+            
+            if(isNaN(baju) || isNaN(jaket) || isNaN(selimut)) return;
+            if(baju<0 || jaket<0 || selimut||NaN) return;
+
+            const total = baju * 7000 + jaket * 5000 + selimut * 12000
             hasil.value="Rp"+total;
         }
 

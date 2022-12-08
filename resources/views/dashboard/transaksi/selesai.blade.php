@@ -47,7 +47,7 @@
                                             </button>
                                         </form>
                                     </td>
-                                    <td><button id="btn">Proses</button></td>
+                                    <td><a href="https://wa.me/62{{ substr($item->customer->nomor_telepon,1) }}?text=Hai%2C%20laundrymu%20telah%20selesai%20%5E.%5E" class="badge bg-success"><i class="bi bi-whatsapp"></i>Hubungi</button></td>
                                 </tr>
                             @endforeach
                         </tbody>

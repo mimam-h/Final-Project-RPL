@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaksi;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PengunjungController extends Controller
@@ -17,7 +18,7 @@ class PengunjungController extends Controller
     
     public function transaksi()
     {
-        $transaksi = Transaksi::latest()->where('user_id',2)->get();
+        $transaksi = Transaksi::latest()->where('user_id',auth()->user()->id)->get();
 
         $filtered = $transaksi->filter(function($item){
             if (!($item['status']=="Selesai" && $item['status_bayar'] =="Lunas")) {
@@ -33,7 +34,7 @@ class PengunjungController extends Controller
 
     public function riwayat()
     {
-        $transaksi = Transaksi::latest()->where('user_id',2)->get();
+        $transaksi = Transaksi::latest()->where('user_id',auth()->user()->id)->get();
 
         $filtered = $transaksi->filter(function($item){
             if ($item['status']=="Selesai" && $item['status_bayar'] =="Lunas") {
@@ -49,8 +50,11 @@ class PengunjungController extends Controller
 
     public function profil()
     {   
+        $transaksi = Transaksi::where('user_id',auth()->user()->user_id)->get();
+        $total = $transaksi->count();
         return view('pengunjung.profil',[
-            "title" => "Profil"
+            "title" => "Profil",
+            "total_transaksi" => $total
         ]);
     }
 }

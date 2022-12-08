@@ -2,7 +2,7 @@
 
 @section('container')
     <a href="/">
-        <img src="img/back-button.png" alt="" style="width:50px;margin-left:-6%"
+        <img src="img/backButton.svg" alt="" style="width:50px;margin-left:-6%"
             class="position-absolute btn btn-outline-primary mt-4">
     </a>
     <div class="row justify-content-center">

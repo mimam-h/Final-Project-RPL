@@ -7,7 +7,9 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\EstimasiController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\PengunjungController;
+use App\Http\Controllers\AdminTransaksiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +50,8 @@ Route::get('/home',[PengunjungController::class,'index']);
 
 Route::get('/transaksi',[PengunjungController::class,'transaksi'])->middleware('auth');
 
+Route::get('/detail/{transaksi:id}',[TransaksiController::class,'show'])->middleware(['auth','checkRole:pelanggan']);
+
 Route::get('/riwayat',[PengunjungController::class,'riwayat'])->middleware(['auth','checkRole:pelanggan']);
 
 Route::get('/profil',[PengunjungController::class,'profil'])->middleware(['auth','checkRole:pelanggan']);
@@ -55,3 +59,9 @@ Route::get('/profil',[PengunjungController::class,'profil'])->middleware(['auth'
 // Admin
 
 Route::get('/dashboard',[DashboardController::class,'index'])->middleware(['auth','checkRole:admin']);
+
+Route::resource('/dashboard/transaksi',AdminTransaksiController::class)->middleware(['auth','checkRole:admin']);
+
+Route::get('/dashboard/diproses',[AdminTransaksiController::class,'diproses'])->middleware(['auth','checkRole:admin']);
+
+Route::get('/dashboard/selesai',[AdminTransaksiController::class,'selesai'])->middleware(['auth','checkRole:admin']);
